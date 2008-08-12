@@ -4,25 +4,11 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <style type="text/css">
-      body
-      {
-      background: gray;
-      }
-      div.main
-      {
-      width: 80\%;
-      background: white;
-      border: thin solid black;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 1em;
-      }
-    </style>
     <title>Von Welch: Bibliography</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-  <body>
-    <div class="main">
+  <body class="bib">
+    <div class="bib">
       <center>
 	<h1>Von Welch: Bibliography</h1>
 	<a href="http://www.ncsa.uiuc.edu/People/vwelch/">My Home Page</a>
