@@ -39,18 +39,29 @@ clean::
 
 ######################################################################
 #
-# My personal bibliography
+# For my work page
 #
 
-PERSONAL_HTML = bib.html
+WORK_HTML = bib.html
+html:: $(WORK_HTML)
+
+$(WORK_HTML): bib.late
+
+clean::
+	rm -f $(WORK_HTML)
+
+#
+# For vwelch.com
+#
+
+PERSONAL_HTML = pubs.php
 html:: $(PERSONAL_HTML)
 
-$(PERSONAL_HTML): bib.late
+$(PERSONAL_HTML): pubs.late
 
 clean::
 	rm -f $(PERSONAL_HTML)
 
-######################################################################
 #
 # The gridshib bibliography
 #
@@ -81,6 +92,10 @@ clean::
 %.html: %.late $(MASTER_BIB)
 	$(BIB2X) -t $< -f $(MASTER_BIB) > $@
 
+%.php: %.late $(MASTER_BIB)
+	$(BIB2X) -t $< -f $(MASTER_BIB) > $@
+
+
 ######################################################################
 #
 # Synching
@@ -100,7 +115,7 @@ SYNC_TARGETS = \
 
 sync: $(SYNC_TARGETS)
 
-$(NCSA_HOMEPAGE): $(PERSONAL_HTML) $(PAPERS_BIB)
+$(NCSA_HOMEPAGE): $(WORK_HTML) $(PAPERS_BIB)
 	$(RSYNC) $? public-linux.ncsa.uiuc.edu:~/public_html && touch $@
 
 # Don have rsync on vwelch.com
@@ -110,7 +125,7 @@ $(PERSONAL_HOMEPAGE): $(PERSONAL_HTML) $(PAPERS_BIB)
 $(GRIDSHIB): $(GS_HTML)
 	$(RSYNC) $? cvs.globus.org:~/gridshib.globus.org && touch $@
 
-$(LOCAL_HOMEPAGE): $(PERSONAL_HTML) $(PAPERS_BIB)
+$(LOCAL_HOMEPAGE): $(WORK_HTML) $(PAPERS_BIB)
 	$(RSYNC) $? ../home-page && touch $@
 
 clean::
