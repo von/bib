@@ -107,7 +107,7 @@ $(NCSA_HOMEPAGE): $(PERSONAL_HTML) $(PAPERS_BIB)
 $(PERSONAL_HOMEPAGE): $(PERSONAL_HTML) $(PAPERS_BIB)
 	scp $? vwelch.com:~/www.vwelch.com/data && touch $@
 
-$(GRIDSHIB): $(PERSONAL_HTML)
+$(GRIDSHIB): $(GS_HTML)
 	$(RSYNC) $? cvs.globus.org:~/gridshib.globus.org && touch $@
 
 $(LOCAL_HOMEPAGE): $(PERSONAL_HTML) $(PAPERS_BIB)
