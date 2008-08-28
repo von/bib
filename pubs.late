@@ -23,7 +23,8 @@
 <!--header -->
 <div id="header">			
   <h1 id="logo-text">vw<span class="gray">elch.com</span></h1>		
-  <h2 id="slogan">just another guy on the web...</h2>
+  <h2 id="slogan">My Professional Publications, Presentations,
+		Standards, etc.</h2>
 </div>
 
 <!-- menu -->	

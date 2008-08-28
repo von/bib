@@ -7,8 +7,8 @@
     <title>Von Welch: Bibliography</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-  <body class="bib">
-    <div class="bib">
+  <body id="bib">
+    <div class="main" id="bib">
       <center>
 	<h1>Von Welch: Bibliography</h1>
 	<a href="http://www.ncsa.uiuc.edu/People/vwelch/">My Home Page</a>
