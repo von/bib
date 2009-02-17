@@ -54,7 +54,7 @@ clean::
 # For vwelch.com
 #
 
-PERSONAL_HTML = pubs.php
+PERSONAL_HTML = pubs.html
 html:: $(PERSONAL_HTML)
 
 $(PERSONAL_HTML): pubs.late
@@ -120,7 +120,7 @@ $(NCSA_HOMEPAGE): $(WORK_HTML) $(PAPERS_BIB)
 
 # Don have rsync on vwelch.com
 $(PERSONAL_HOMEPAGE): $(PERSONAL_HTML) $(PAPERS_BIB)
-	scp $? vwelch.com:~/www.vwelch.com/data && touch $@
+	scp $? vwelch.com:~/www.vwelch.com/data/professional && touch $@
 
 $(GRIDSHIB): $(GS_HTML)
 	$(RSYNC) $? cvs.globus.org:~/gridshib.globus.org && touch $@
