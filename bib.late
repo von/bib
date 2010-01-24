@@ -44,7 +44,6 @@
 	  <a name="%%$bibkey%%"><span class="author">%%author%%</span></a>.
 	  <span class="title"><a href="%%url%%"><i>%%title%%</i></a></span>.
 	  <span class="booktitle">%%booktitle%%</span>,
-	  <span class="month">%%month%%</span>
 	  <span class="year">%%year%%</span>.
 	</li>
 	<br/>
