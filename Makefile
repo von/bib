@@ -13,27 +13,48 @@ RSYNC=rsync -auv
 
 ######################################################################
 #
+# Directories
+
+# Bib source files
+SRC=src/
+
+# Templates
+TEMPLATES=late/
+
+# Temporary build files
+TMP=tmp/
+
+######################################################################
+#
 # Our targets
 #
 
 default: html
+
+.PHONY: default
+.PHONY: html
+.PHONY: clean
+
+$(TMP):
+	mkdir $(TMP)
 
 ######################################################################
 #
 # Build the master bibliography file.
 
 # Generated master BIB file
-MASTER_BIB = master.bib
+MASTER_BIB = $(TMP)/master.bib
 
 # Inputs to master BIB file
-BIB_FILES = header.bib \
-	papers.bib \
-	reports.bib \
-	pres.bib \
-	workshops.bib \
-	gridshib.bib
+BIB_FILES = $(SRC)/header.bib \
+	$(SRC)/papers.bib \
+	$(SRC)/reports.bib \
+	$(SRC)/pres.bib \
+	$(SRC)/workshops.bib \
+	$(SRC)/gridshib.bib
 
 $(MASTER_BIB): $(BIB_FILES)
+	@if test -d $(TMP) ; then : else mkdir $(TMP) fi
 	cat $^ > $(MASTER_BIB)
 
 clean::
@@ -47,7 +68,7 @@ clean::
 WORK_HTML = bib.html
 html:: $(WORK_HTML)
 
-$(WORK_HTML): bib.late
+$(WORK_HTML): $(TEMPLATES)/bib.late
 
 clean::
 	rm -f $(WORK_HTML)
@@ -59,7 +80,7 @@ clean::
 PERSONAL_HTML = pubs.html
 html:: $(PERSONAL_HTML)
 
-$(PERSONAL_HTML): pubs.late
+$(PERSONAL_HTML): $(TEMPLATES)/pubs.late
 
 clean::
 	rm -f $(PERSONAL_HTML)
@@ -78,11 +99,11 @@ GS_HTML = \
 
 html:: $(GS_HTML)
 
-$(GS_SPECS_HTML): gridshib-specs-bib.late
+$(GS_SPECS_HTML): $(TEMPLATES)/gridshib-specs-bib.late
 
-$(GS_PRES_HTML): gridshib-pres-bib.late
+$(GS_PRES_HTML): $(TEMPLATES)/gridshib-pres-bib.late
 
-$(GS_PAPERS_HTML): gridshib-papers-bib.late
+$(GS_PAPERS_HTML): $(TEMPLATES)/gridshib-papers-bib.late
 
 clean::
 	rm -f $(GS_HTML)
@@ -91,7 +112,7 @@ clean::
 #
 # Implicit rule for making html files from template and master bib.
 
-%.html: %.late $(MASTER_BIB)
+%.html: $(TEMPLATES)/%.late $(MASTER_BIB)
 	$(BIB2X) -t $< -f $(MASTER_BIB) > $@
 
 %.php: %.late $(MASTER_BIB)
@@ -104,10 +125,10 @@ clean::
 
 # Files we touch to indicate we've rsync'ed to the web site
 
-GRIDSHIB = update.gridshib
-NCSA_HOMEPAGE = update.ncsa
-PERSONAL_HOMEPAGE = update.personal
-LOCAL_HOMEPAGE = update.local
+GRIDSHIB = $(TMP)/update.gridshib
+NCSA_HOMEPAGE = $(TMP)/update.ncsa
+PERSONAL_HOMEPAGE = $(TMP)/update.personal
+LOCAL_HOMEPAGE = $(TMP)/update.local
 
 SYNC_TARGETS = \
 	$(NCSA_HOMEPAGE) \
@@ -117,17 +138,17 @@ SYNC_TARGETS = \
 
 sync: $(SYNC_TARGETS)
 
-$(NCSA_HOMEPAGE): $(WORK_HTML) $(PAPERS_BIB)
+$(NCSA_HOMEPAGE): $(WORK_HTML) $(PAPERS_BIB) $(TMP)
 	$(RSYNC) $? public-linux.ncsa.uiuc.edu:~/public_html && touch $@
 
 # Don have rsync on vwelch.com
-$(PERSONAL_HOMEPAGE): $(PERSONAL_HTML) $(PAPERS_BIB)
+$(PERSONAL_HOMEPAGE): $(PERSONAL_HTML) $(PAPERS_BIB) $(TMP)
 	scp $? vwelch.com:~/www.vwelch.com/data/professional && touch $@
 
-$(GRIDSHIB): $(GS_HTML)
+$(GRIDSHIB): $(GS_HTML) $(TMP)
 	$(RSYNC) $? cvs.globus.org:~/gridshib.globus.org && touch $@
 
-$(LOCAL_HOMEPAGE): $(WORK_HTML) $(PAPERS_BIB)
+$(LOCAL_HOMEPAGE): $(WORK_HTML) $(PAPERS_BIB) $(TMP)
 	$(RSYNC) $? ../home-page && touch $@
 
 clean::
