@@ -22,8 +22,10 @@ default: html
 #
 # Build the master bibliography file.
 
+# Generated master BIB file
 MASTER_BIB = master.bib
 
+# Inputs to master BIB file
 BIB_FILES = header.bib \
 	papers.bib \
 	reports.bib \
