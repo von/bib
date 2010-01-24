@@ -5,7 +5,7 @@
 </div>
 
 <div class="pubs" id="pubs-menu">
-  <ul id="pubs-menu">
+  <ul>
     <li><a href="#papers">Papers</a></li>
     <li><a href="#standards">Standards</a></li>
     <li><a href="#standards">Standards</a></li>
@@ -16,12 +16,12 @@
 </div>
 
 <div class="pubs" id="papers">
-  <h2><a name="papers">Papers</a></h2>
-  <ul id="papers">
+  <h2>Papers</h2>
+  <ul>
     %%FOR%%(inc:year; author={"Von"}; type={"paper"};)
     
-    <li class="paper">
-      <a name="%%$bibkey%%"><span class="author">%%author%%</span></a>.
+    <li class="paper" id="%%$bibkey%%">
+      <span class="author">%%author%%</span>.
       <span class="title"><a href="%%url%%"><i>%%title%%</i></a></span>.
       <span class="booktitle">%%booktitle%%</span>,
       <span class="year">%%year%%</span>.
@@ -32,12 +32,12 @@
 </div>
 
 <div class="pubs" id="standards">
-  <h2><a name="standards">Standards</a></h2>
+  <h2>Standards</h2>
   <ul class="standards">
     %%FOR%%(inc:year; author={"Von"}; type={"standard"};)
     
-    <li class="standard">
-      <a name="%%$bibkey%%"><span class="author">%%author%%</span></a>.
+    <li id="%%$bibkey%%" class="standard">
+      <span class="author">%%author%%</span>.
       <span class="title"><a href="%%url%%"><i>%%title%%</i></a></span>.
       <span class="booktitle">%%booktitle%%</span>,
       <span class="year">%%year%%</span>.
@@ -48,12 +48,12 @@
 </div>
 
 <div class="pubs" id="workshops">
-  <h2><a name="workshops">Organized Workshops</a></h2>
-  <ul class="workshops">
+  <h2>Organized Workshops</h2>
+  <ul>
     %%FOR%%(inc:year; type={"workshop"};)
     
-    <li class="workshop">
-      <a name="%%$bibkey%%"><span class="title"><i>%%title%%</i></span></a>.
+    <li class="workshop" id="%%$bibkey%%">
+      <span class="title"><i>%%title%%</i></span>.
       <span class="howpublished">%%howpublished%%</span>,
       <span class="month">%%month%%</span>
       <span class="year">%%year%%</span>.
@@ -65,12 +65,12 @@
 </div>
 
 <div class="pubs" id="reports">
-  <h2><a name="reports">Technical Reports</a></h2>
-  <ul class="reports">
+  <h2>Technical Reports</h2>
+  <ul>
     %%FOR%%(inc:year; author={"Von"}; type={"report"};)
     
-    <li class="report">
-      <a name="%%$bibkey%%"><span class="author">%%author%%</span></a>.
+    <li class="report" id="%%$bibkey%%">
+      <span class="author">%%author%%</span>.
       <span class="title"><a href="%%url%%"><i>%%title%%</i></a></span>.
       <span class="month">%%month%%</span>
       <span class="year">%%year%%</span>.
@@ -81,12 +81,12 @@
 </div>
 
 <div class="pubs" id="presentations">
-  <h2><a name="presentations">Presentations</a></h2>
+  <h2>Presentations</h2>
   <ul class="presentations">
     %%FOR%%(inc:year; author={"Von"}; type={"presentation"};)
     
-    <li class="presentation">
-      <a name="%%$bibkey%%"><span class="author">%%author%%</span></a>.
+    <li class="presentation" id="%%$bibkey%%">
+      <span class="author">%%author%%</span>.
       <span class="title"><a href="%%url%%"><i>%%title%%</i></a></span>.
       <span class="howpublished">%%howpublished%%</span>,
       <span class="month">%%month%%</span>
