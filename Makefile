@@ -53,9 +53,8 @@ BIB_FILES = $(SRC)/header.bib \
 	$(SRC)/workshops.bib \
 	$(SRC)/gridshib.bib
 
-$(MASTER_BIB): $(BIB_FILES)
-	@if test -d $(TMP) ; then : else mkdir $(TMP) fi
-	cat $^ > $(MASTER_BIB)
+$(MASTER_BIB): $(TMP) $(BIB_FILES)
+	cat $(BIB_FILE) > $(MASTER_BIB)
 
 clean::
 	rm -f $(MASTER_BIB)
