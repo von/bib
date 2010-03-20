@@ -54,7 +54,7 @@ BIB_FILES = $(SRC)/header.bib \
 	$(SRC)/gridshib.bib
 
 $(MASTER_BIB): $(TMP) $(BIB_FILES)
-	cat $(BIB_FILE) > $(MASTER_BIB)
+	cat $(BIB_FILES) > $(MASTER_BIB)
 
 clean::
 	rm -f $(MASTER_BIB)
