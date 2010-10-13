@@ -67,7 +67,7 @@
 <div class="pubs" id="reports">
   <h2>Technical Reports</h2>
   <ul>
-    %%FOR%%(inc:year; author={"Von"}; type={"report"};)
+    %%FOR%%(inc:year; type={"report", "contrib-report"};)
     
     <li class="report" id="%%$bibkey%%">
       <span class="author">%%author%%</span>.

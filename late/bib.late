@@ -70,7 +70,8 @@
       <hr/>
       <h2><a name="reports">Technical Reports</a></h2>
       <ul class="reports">
-	%%FOR%%(inc:year; author={"Von"}; type={"report"};)
+
+	%%FOR%%(inc:year; type={"report", "contrib-report"};)
 	
 	<li class="report">
 	  <a name="%%$bibkey%%"><span class="author">%%author%%</span></a>.
@@ -80,6 +81,7 @@
 	</li>
 	<br/>
 	%%ROF%%
+
       </ul>
 
       <hr/>
