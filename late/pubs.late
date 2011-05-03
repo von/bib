@@ -53,11 +53,10 @@
     %%FOR%%(inc:year; type={"workshop"};)
     
     <li class="workshop" id="%%$bibkey%%">
-      <span class="title"><i>%%title%%</i></span>.
+      <span class="title"><a href="%%url%%"><i>%%title%%</i></a></span>.
       <span class="howpublished">%%howpublished%%</span>,
       <span class="month">%%month%%</span>
       <span class="year">%%year%%</span>.
-      (<a href="%%url%%">link</a>)
     </li>
     <br/>
     %%ROF%%
