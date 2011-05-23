@@ -77,7 +77,7 @@ clean::
 #
 
 PERSONAL_HTML = pubs.html
-html:: $(PERSONAL_HTML)
+#html:: $(PERSONAL_HTML)
 
 $(PERSONAL_HTML): $(TEMPLATES)/pubs.late
 
