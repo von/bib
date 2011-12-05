@@ -26,7 +26,9 @@ workshops.bib: My workshops
 ==Templates for generated files==
 
 bib.late: template file for bib.html
+	  This is a stand alone html document for my professional website.
 pubs.late: template for pubs.html
+	   Not in use currently. Used to be for personal website.
 
 # Tempate files for gridshib.globus.org html files
 gridshib-papers-bib.late
