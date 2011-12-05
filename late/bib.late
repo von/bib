@@ -74,6 +74,10 @@
 	<li class="report">
 	  <a name="%%$bibkey%%"><span class="author">%%author%%</span></a>.
 	  <span class="title"><a href="%%url%%"><i>%%title%%</i></a></span>.
+	  %%BIB%%(inc:howpublished;)
+	  N="<span class=\"howpublished\">%%content%%</span>,"
+	  M=""
+	  %%BIB%%
 	  <span class="month">%%month%%</span>
 	  <span class="year">%%year%%</span>.
 	</li>
