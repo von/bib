@@ -1,0 +1,117 @@
+{{py:
+
+# Create separate variables for types of entries
+types={}
+for entry in entries:
+    types.setdefault(entry.type, []).append(entry)
+papers = types["paper"] if types.has_key("paper") else []
+standards = types["standard"] if types.has_key("standard") else []
+workshops = types["workshop"] if types.has_key("workshop") else []
+reports = types["report"] if types.has_key("report") else []
+presentations = types["presentation"] if types.has_key("presentation") else []
+}}
+
+<?xml version="1.0" encoding="us-ascii"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>Von Welch: Bibliography</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body id="bib">
+    <div class="main" id="bib">
+      <center>
+	<h1>Von Welch: Bibliography</h1>
+      </center>
+      <ul>
+	<li><a href="#papers">Publications</a></li>
+	<li><a href="#standards">Standards</a></li>
+	<li><a href="#reports">Technical Reports</a></li>
+	<li><a href="#presentations">Recent Presentations</a></li>
+	<li><a href="#workshops">Organized Workshops and Meetings</a></li>
+      </ul>
+      <hr/>
+      <h2><a name="papers">Papers</a></h2>
+      <ul class="papers">
+	{{for entry in papers}}
+	<li class="paper">
+	  <a name="{{ entry.key }}"><span class="author">{{ entry.author | authors_filter }}</span></a>.
+	  {{# Use 'html' filter to avoid quoting }}
+	  <span class="title"><a href="{{ entry.url | html }}"><i>{{ entry.title }}</i></a></span>.
+	  <span class="booktitle">{{ entry.booktitle }}</span>,
+	  <span class="year">{{ entry.year }}</span>.
+	</li>
+	<br/>
+	{{endfor}}
+      </ul>
+      
+      <hr/>
+      <h2><a name="standards">Standards</a></h2>
+      <ul class="standards">
+	{{for entry in standards}}
+	<li class="standard">
+	  <a name="{{ entry.key }}"><span class="author">{{ entry.author | authors_filter }}</span></a>.
+	  <span class="title"><a href="{{ entry.url | html }}"><i>{{ entry.title }}</i></a></span>.
+	  <span class="booktitle">{{ entry.booktitle }}</span>,
+	  <span class="year">{{ entry.year }}</span>.
+	</li>
+	<br/>
+	{{endfor}}
+      </ul>
+
+
+      <hr/>
+      <h2><a name="workshops">Organized Workshops</a></h2>
+      <ul class="workshops">
+	{{for entry in workshops}}
+	
+	<li class="workshop">
+	  <a name="{{ entry.key }}"><span class="title"><a href="{{ entry.url | html }}"><i>{{ entry.title }}</i></a></span></a>.
+	  <span class="howpublished">{{ entry.howpublished }}</span>,
+	  <span class="month">{{ entry.month | month_filter }}</span>
+	  <span class="year">{{entry.year }}</span>.
+	</li>
+	<br/>
+	{{endfor}}
+      </ul>
+
+      <hr/>
+      <h2><a name="reports">Technical Reports</a></h2>
+      <ul class="reports">
+
+	{{for entry in reports}}
+	
+	<li class="report">
+	  <a name="{{ entry.key }}"><span class="author">{{ entry.author | authors_filter }}</span></a>.
+	  <span class="title"><a href="{{ entry.url | html }}"><i>{{ entry.title }}</i></a></span>.
+	  {{if entry.howpublished}}
+	  <span class="howpublished">{{ entry.howpublished }}</span>,
+	  {{endif}}
+	  <span class="month">{{ entry.month | month_filter }}</span>
+	  <span class="year">{{ entry.year }}</span>.
+	</li>
+	<br/>
+	{{endfor}}
+
+      </ul>
+
+      <hr/>
+      <h2><a name="presentations">Presentations</a></h2>
+      <ul class="presentations">
+	{{for entry in presentations}}
+	
+	<li class="presentation">
+	  <a name="{{ entry.key }}"><span class="author">{{ entry.author | authors_filter }}</span></a>.
+	  <span class="title"><a href="{{ entry.url | html }}"><i>{{ entry.title }}</i></a></span>.
+	  <span class="howpublished">{{ entry.howpublished }}</span>,
+	  <span class="month">{{ entry.month | month_filter }}</span>
+	  <span class="year">{{ entry.year }}</span>.
+	</li>
+	<br/>
+	{{endfor}}
+      </ul>
+    </div>
+  </body>
+</html>
