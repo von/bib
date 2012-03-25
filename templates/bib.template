@@ -1,14 +1,12 @@
 {{py:
 
 # Create separate variables for types of entries
-types={}
-for entry in entries:
-    types.setdefault(entry.type, []).append(entry)
-papers = types["paper"] if types.has_key("paper") else []
-standards = types["standard"] if types.has_key("standard") else []
-workshops = types["workshop"] if types.has_key("workshop") else []
-reports = types["report"] if types.has_key("report") else []
-presentations = types["presentation"] if types.has_key("presentation") else []
+papers = filter(lambda e: e.type == "paper", entries)
+standards = filter(lambda e: e.type == "standard", entries)
+workshops = filter(lambda e: e.type == "workshop", entries)
+reports = filter(lambda e: e.type == "report", entries)
+presentations = filter(lambda e: e.type == "presentation", entries)
+
 }}
 
 <?xml version="1.0" encoding="us-ascii"?>
