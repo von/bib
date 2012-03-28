@@ -1,7 +1,7 @@
 
 Manage my Biolography and convert to web pages.
 
-Uses my pyBib script.
+Uses my pyBib script: https://github.com/von/pyBib
 
 Makefile: Make targets are:
   default or html - create html files
