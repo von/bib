@@ -17,8 +17,9 @@ src/workshops.conf: My organized workshops
 
 ==Templates for generated files==
 
-templates/bib.template: template file for bib.html
+templates/bib.html.template: template file for bib.html
 	  This is a stand alone html document for my professional website.
+
 ==Generated Files==
 
 bib.html: HTML file for my work webpage

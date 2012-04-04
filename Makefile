@@ -60,7 +60,7 @@ clean::
 #
 
 WORK_HTML = bib.html
-WORK_TEMPLATE = $(TEMPLATES)/bib.template
+WORK_TEMPLATE = $(TEMPLATES)/$(WORK_HTML).template
 
 html:: $(WORK_HTML)
 
@@ -73,5 +73,5 @@ clean::
 #
 # Implicit rule for making html files from template and master bib.
 
-%.html: $(TEMPLATES)/%.template $(MASTER_BIB)
+%.html: $(TEMPLATES)/%.html.template $(MASTER_BIB)
 	$(PYBIB) -H -t $< $(MASTER_BIB) > $@
