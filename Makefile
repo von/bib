@@ -23,10 +23,11 @@ TMP=tmp/
 # Our targets
 #
 
-default: html
+default: html txt
 
 .PHONY: default
 .PHONY: html
+.PHONY: txt
 .PHONY: clean
 
 $(TMP):
@@ -71,7 +72,26 @@ clean::
 
 ######################################################################
 #
-# Implicit rule for making html files from template and master bib.
+# Text version for easy copy and paste
+#
+
+TXT = bib.txt
+TXT_TEMPLATE = $(TEMPLATES)/$(TXT).template
+
+txt:: $(TXT)
+
+$(TXT): $(TXT_TEMPLATE)
+
+clean::
+	rm -f $(TXT)
+
+######################################################################
+#
+# Implicit rules
 
 %.html: $(TEMPLATES)/%.html.template $(MASTER_BIB)
 	$(PYBIB) -H -t $< $(MASTER_BIB) > $@
+
+%.txt: $(TEMPLATES)/%.txt.template $(MASTER_BIB)
+	$(PYBIB) -t $< $(MASTER_BIB) > $@
+

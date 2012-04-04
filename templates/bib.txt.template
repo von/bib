@@ -1,0 +1,59 @@
+{{py:
+
+# Create separate variables for types of entries
+papers = filter(lambda e: e.type == "paper", entries)
+standards = filter(lambda e: e.type == "standard", entries)
+workshops = filter(lambda e: e.type == "workshop", entries)
+reports = filter(lambda e: e.type == "report", entries)
+presentations = filter(lambda e: e.type == "presentation", entries)
+
+}}
+
+=== Papers ===
+
+
+{{for entry in papers}}
+{{ entry.key }}:
+{{ entry.author | authors_filter }}. {{ entry.title }}. {{ entry.booktitle }}, {{ entry.year }}. {{ entry.url }}
+
+
+{{endfor}}
+
+=== Standards ===
+
+
+{{for entry in standards}}
+{{ entry.key }}:
+{{ entry.author | authors_filter }}. {{ entry.title }}. {{ entry.booktitle }}, {{ entry.year }}. {{ entry.url }}
+
+
+{{endfor}}
+
+=== Workshops ===
+
+
+{{for entry in workshops}}
+{{ entry.key }}:
+{{ entry.title }}. {{ entry.howpublished }}. {{ entry.month | month_filter }} {{entry.year }}. {{ entry.url }}
+
+
+{{endfor}}
+
+=== Reports ====
+
+
+{{for entry in reports}}
+{{ entry.key }}:
+{{ entry.author | authors_filter }}. {{ entry.title }} {{if entry.howpublished}} {{ entry.howpublished }}. {{endif}} {{ entry.month | month_filter }}, {{ entry.year }}. {{ entry.url }}
+
+
+{{endfor}}
+
+=== Presentations ===
+
+{{for entry in presentations}}
+{{entry.key}}:
+{{ entry.author | authors_filter }}. {{ entry.title }}. {{ entry.howpublished }}. {{ entry.month | month_filter }}, {{ entry.year }}. {{ entry.url }}
+
+
+{{endfor}}
