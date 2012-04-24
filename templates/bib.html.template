@@ -36,8 +36,13 @@ presentations = filter(lambda e: e.type == "presentation", entries)
 	{{for entry in papers}}
 	<li class="paper">
 	  <a name="{{ entry.key }}"><span class="author">{{ entry.author | authors_filter }}</span></a>.
+	  {{# Keep title and tags on one line to avoid spaces }}
+	  {{if entry.url}}
 	  {{# Use 'html' filter to avoid quoting }}
 	  <span class="title"><a href="{{ entry.url | html }}"><i>{{ entry.title }}</i></a></span>.
+	  {{else}}
+	  <span class="title"><i>{{ entry.title }}</i></span>.
+	  {{endif}}
 	  <span class="booktitle">{{ entry.booktitle }}</span>,
 	  <span class="year">{{ entry.year }}</span>.
 	</li>
