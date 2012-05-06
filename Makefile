@@ -3,7 +3,7 @@
 # Binaries and scripts we call
 #
 
-PYBIB = pyBib.py
+PYBIB = ~/develop/pyBib/scripts/pyBib.py
 
 ######################################################################
 #
@@ -90,7 +90,7 @@ clean::
 # Implicit rules
 
 %.html: $(TEMPLATES)/%.html.template $(MASTER_BIB)
-	$(PYBIB) -H -t $< $(MASTER_BIB) > $@
+	$(PYBIB) -d -t $< $(MASTER_BIB) > $@
 
 %.txt: $(TEMPLATES)/%.txt.template $(MASTER_BIB)
 	$(PYBIB) -t $< $(MASTER_BIB) > $@
