@@ -7,6 +7,14 @@ PYBIB = ~/develop/pyBib/scripts/pyBib.py
 
 ######################################################################
 #
+# Installation paths
+#
+
+DEV_ROOT=$(HOME)/develop/www/
+WEBSITE_HTML=$(DEV_ROOT)/www.vonwelch.com/pubs/index.html
+
+######################################################################
+#
 # Directories
 
 # Bib source files
@@ -29,6 +37,7 @@ default: html txt
 .PHONY: html
 .PHONY: txt
 .PHONY: clean
+.PHONY: install
 
 $(TMP):
 	mkdir $(TMP)
@@ -69,6 +78,16 @@ $(WORK_HTML): $(WORK_TEMPLATE)
 
 clean::
 	rm -f $(WORK_HTML)
+
+######################################################################
+#
+# Installation into development directory
+
+install: $(WEBSITE_HTML)
+
+$(WEBSITE_HTML): $(WORK_HTML)
+	@echo "Copying $(WORK_HTML) to $(WEBSITE_HTML)"
+	cp $(WORK_HTML) $(WEBSITE_HTML)
 
 ######################################################################
 #
