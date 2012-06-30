@@ -38,15 +38,13 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
         % for entry in papers:
         <li class="paper">
           <a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
-          ## Keep title and tags on one line to avoid spaces
-          % if entry["url"]:
-          ## Use 'html' filter to avoid quoting
-          <span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span>.
-          % else:
           <span class="title"><i>${entry["title"]}</i></span>.
-          % endif
           <span class="booktitle">${entry["booktitle"]}</span>,
           <span class="year">${entry["year"]}</span>.
+          % if entry.url:
+          ## Use 'html' filter to avoid quoting
+          <span class="url"><a href="${entry.url | h}">${entry.url}</a></span>
+          % endif
         </li>
         <br/>
         % endfor
@@ -58,9 +56,13 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
         % for entry in standards:
         <li class="standard">
           <a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
-          <span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span>.
+          <span class="title"><i>${entry["title"]}</i></span>.
           <span class="booktitle">${entry["booktitle"]}</span>,
           <span class="year">${entry["year"]}</span>.
+          % if entry.url:
+          ## Use 'html' filter to avoid quoting
+          <span class="url"><a href="${entry.url | h}">${entry.url}</a></span>
+          % endif
         </li>
         <br/>
         % endfor
@@ -72,10 +74,14 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
       <ul class="workshops">
         % for entry in workshops:
         <li class="workshop">
-          <a name="${entry["key"]}"><span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span></a>.
+          <a name="${entry["key"]}"><span class="title"><i>${entry["title"]}</i></span></a>.
           <span class="howpublished">${entry["howpublished"]}</span>,
           <span class="month">${entry["month"] | month_filter }</span>
           <span class="year">${entry["year"]}</span>.
+          % if entry.url:
+          ## Use 'html' filter to avoid quoting
+          <span class="url"><a href="${entry.url | h}">${entry.url}</a></span>
+          % endif
         </li>
         <br/>
         % endfor
@@ -88,7 +94,7 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
         % for entry in reports:
         <li class="report">
           <a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
-          <span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span>.
+          <span class="title"><i>${entry["title"]}</i></span>.
           % if entry["howpublished"]:
           <span class="howpublished">${entry["howpublished"]}</span>,
           % endif
@@ -96,6 +102,10 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
           <span class="month">${entry["month"] | month_filter }</span>
           % endif
           <span class="year">${entry["year"]}</span>.
+          % if entry.url:
+          ## Use 'html' filter to avoid quoting
+          <span class="url"><a href="${entry.url | h}">${entry.url}</a></span>
+          % endif
         </li>
         <br/>
         % endfor
@@ -109,10 +119,14 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
 
         <li class="presentation">
           <a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
-          <span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span>.
+          <span class="title"><i>${entry["title"]}</i></span>.
           <span class="howpublished">${entry["howpublished"]}</span>,
           <span class="month">${entry["month"] | month_filter }</span>
           <span class="year">${entry["year"]}</span>.
+          % if entry.url:
+          ## Use 'html' filter to avoid quoting
+          <span class="url"><a href="${entry.url | h}">${entry.url}</a></span>
+          % endif
         </li>
         <br/>
         % endfor
