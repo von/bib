@@ -13,7 +13,7 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
 %>
 
 <?xml version="1.0" encoding="us-ascii"?>
-<!DOCTYPE html 
+<!DOCTYPE html
 	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -36,87 +36,85 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
       <hr/>
       <h2><a name="papers">Papers</a></h2>
       <ul class="papers">
-          % for entry in papers:
-					<li class="paper">
-						<a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
-						## Keep title and tags on one line to avoid spaces
-						% if entry["url"]:
-						## Use 'html' filter to avoid quoting
-						<span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span>.
-						% else:
-						<span class="title"><i>${entry["title"]}</i></span>.
-						% endif
-						<span class="booktitle">${entry["booktitle"]}</span>,
-						<span class="year">${entry["year"]}</span>.
-					</li>
-					<br/>
-					% endfor
+        % for entry in papers:
+        <li class="paper">
+          <a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
+          ## Keep title and tags on one line to avoid spaces
+          % if entry["url"]:
+          ## Use 'html' filter to avoid quoting
+          <span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span>.
+          % else:
+          <span class="title"><i>${entry["title"]}</i></span>.
+          % endif
+          <span class="booktitle">${entry["booktitle"]}</span>,
+          <span class="year">${entry["year"]}</span>.
+        </li>
+        <br/>
+        % endfor
       </ul>
-      
+
       <hr/>
       <h2><a name="standards">Standards</a></h2>
       <ul class="standards">
-				% for entry in standards:
-				<li class="standard">
-					<a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
-					<span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span>.
-					<span class="booktitle">${entry["booktitle"]}</span>,
-					<span class="year">${entry["year"]}</span>.
-				</li>
-				<br/>
-				% endfor
+        % for entry in standards:
+        <li class="standard">
+          <a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
+          <span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span>.
+          <span class="booktitle">${entry["booktitle"]}</span>,
+          <span class="year">${entry["year"]}</span>.
+        </li>
+        <br/>
+        % endfor
       </ul>
 
 
       <hr/>
       <h2><a name="workshops">Organized Workshops</a></h2>
       <ul class="workshops">
-				% for entry in workshops:
-	
-				<li class="workshop">
-					<a name="${entry["key"]}"><span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span></a>.
-					<span class="howpublished">${entry["howpublished"]}</span>,
-					<span class="month">${entry["month"] | month_filter }</span>
-					<span class="year">${entry["year"]}</span>.
-				</li>
-				<br/>
-				% endfor
+        % for entry in workshops:
+        <li class="workshop">
+          <a name="${entry["key"]}"><span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span></a>.
+          <span class="howpublished">${entry["howpublished"]}</span>,
+          <span class="month">${entry["month"] | month_filter }</span>
+          <span class="year">${entry["year"]}</span>.
+        </li>
+        <br/>
+        % endfor
       </ul>
 
       <hr/>
       <h2><a name="reports">Technical Reports</a></h2>
       <ul class="reports">
-				
-				% for entry in reports:
-	
-				<li class="report">
-					<a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
-					<span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span>.
-					% if entry["howpublished"]:
-					<span class="howpublished">${entry["howpublished"]}</span>,
-					% endif
-					<span class="month">${entry["month"] | month_filter }</span>
-					<span class="year">${entry["year"]}</span>.
-				</li>
-				<br/>
-				% endfor
+
+        % for entry in reports:
+        <li class="report">
+          <a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
+          <span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span>.
+          % if entry["howpublished"]:
+          <span class="howpublished">${entry["howpublished"]}</span>,
+          % endif
+          <span class="month">${entry["month"] | month_filter }</span>
+          <span class="year">${entry["year"]}</span>.
+        </li>
+        <br/>
+        % endfor
 
       </ul>
-			
+
       <hr/>
       <h2><a name="presentations">Presentations</a></h2>
       <ul class="presentations">
-				% for entry in presentations:
-	
-				<li class="presentation">
-					<a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
-					<span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span>.
-					<span class="howpublished">${entry["howpublished"]}</span>,
-					<span class="month">${entry["month"] | month_filter }</span>
-					<span class="year">${entry["year"]}</span>.
-				</li>
-				<br/>
-				% endfor
+        % for entry in presentations:
+
+        <li class="presentation">
+          <a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
+          <span class="title"><a href="${entry["url"] | h}"><i>${entry["title"]}</i></a></span>.
+          <span class="howpublished">${entry["howpublished"]}</span>,
+          <span class="month">${entry["month"] | month_filter }</span>
+          <span class="year">${entry["year"]}</span>.
+        </li>
+        <br/>
+        % endfor
       </ul>
     </div>
   </body>
