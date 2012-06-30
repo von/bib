@@ -19,7 +19,6 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title>Von Welch: Bibliography</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body id="bib">
     <div class="main" id="bib">
