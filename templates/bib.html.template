@@ -93,7 +93,9 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
           % if entry["howpublished"]:
           <span class="howpublished">${entry["howpublished"]}</span>,
           % endif
+          % if entry.month:
           <span class="month">${entry["month"] | month_filter }</span>
+          % endif
           <span class="year">${entry["year"]}</span>.
         </li>
         <br/>
