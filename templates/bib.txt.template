@@ -3,6 +3,8 @@
 from pybib import authors_filter
 from pybib import month_filter
 
+entries.sort_by_date()
+
 # Create separate variables for types of entries
 papers = filter(lambda e: e["type"] == "paper", entries)
 standards = filter(lambda e: e["type"] == "standard", entries)
