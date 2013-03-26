@@ -12,6 +12,10 @@ workshops = filter(lambda e: e["type"] == "workshop", entries)
 reports = filter(lambda e: e["type"] == "report", entries)
 presentations = filter(lambda e: e["type"] == "presentation", entries)
 
+# Create redirection URLS based on htaccess
+def url(e):
+    return "http://www.vonwelch.com/pubs/" + e["key"]
+
 %>
 
 <%text>
@@ -39,7 +43,7 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
       <span class="year">${entry["year"]}</span>.
       % if entry.url:
       ## Use 'html' filter to avoid quoting
-      <span class="url"><a href="${entry.url | h}">${entry.url}</a></span>
+      <span class="url"><a href="${url(entry) | h}">${url(entry)}</a></span>
       % endif
       % if entry.note:
       <ul class="note">
@@ -62,7 +66,7 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
       <span class="year">${entry["year"]}</span>.
       % if entry.url:
       ## Use 'html' filter to avoid quoting
-      <span class="url"><a href="${entry.url | h}">${entry.url}</a></span>
+      <span class="url"><a href="${url(entry) | h}">${url(entry)}</a></span>
       % endif
     </li>
     <br/>
@@ -81,7 +85,7 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
       <span class="year">${entry["year"]}</span>.
       % if entry.url:
       ## Use 'html' filter to avoid quoting
-      <span class="url"><a href="${entry.url | h}">${entry.url}</a></span>
+      <span class="url"><a href="${url(entry) | h}">${url(entry)}</a></span>
       % endif
     </li>
     <br/>
@@ -105,7 +109,7 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
       <span class="year">${entry["year"]}</span>.
       % if entry.url:
       ## Use 'html' filter to avoid quoting
-      <span class="url"><a href="${entry.url | h}">${entry.url}</a></span>
+      <span class="url"><a href="${url(entry) | h}">${url(entry)}</a></span>
       % endif
     </li>
     <br/>
@@ -126,7 +130,7 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
       <span class="year">${entry["year"]}</span>.
       % if entry.url:
       ## Use 'html' filter to avoid quoting
-      <span class="url"><a href="${entry.url | h}">${entry.url}</a></span>
+      <span class="url"><a href="${url(entry) | h}">${url(entry)}</a></span>
       % endif
     </li>
     <br/>

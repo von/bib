@@ -12,6 +12,10 @@ workshops = filter(lambda e: e["type"] == "workshop", entries)
 reports = filter(lambda e: e["type"] == "report", entries)
 presentations = filter(lambda e: e["type"] == "presentation", entries)
 
+# Create redirections URLs based on .htaccess
+def url(e):
+    return "http://www.vonwelch.com/pubs/" + e["key"]
+
 %>
 
 === Papers ===
@@ -19,7 +23,7 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
 
 % for entry in papers:
 ${entry["key"]}:
-${entry["author"] | authors_filter}. ${entry["title"]}. ${entry["booktitle"]}, ${entry["year"]}. ${entry["url"]}
+${entry["author"] | authors_filter}. ${entry["title"]}. ${entry["booktitle"]}, ${entry["year"]}. ${url(entry)}
 
 % endfor
 
@@ -28,7 +32,7 @@ ${entry["author"] | authors_filter}. ${entry["title"]}. ${entry["booktitle"]}, $
 
 % for entry in standards:
 ${entry["key"]}:
-${entry["author"] | authors_filter}. ${entry["title"]}. ${entry["booktitle"]}, ${entry["year"]}. ${entry["url"]}
+${entry["author"] | authors_filter}. ${entry["title"]}. ${entry["booktitle"]}, ${entry["year"]}. ${url(entry)}
 
 % endfor
 
@@ -36,7 +40,7 @@ ${entry["author"] | authors_filter}. ${entry["title"]}. ${entry["booktitle"]}, $
 
 % for entry in workshops:
 ${entry["key"]}:
-${entry["title"]}. ${entry["howpublished"]}. ${entry["month"] | month_filter} ${entry["year"]}. ${entry["url"]}
+${entry["title"]}. ${entry["howpublished"]}. ${entry["month"] | month_filter} ${entry["year"]}. ${url(entry)}
 
 % endfor
 
@@ -49,7 +53,7 @@ ${entry["author"] | authors_filter}. ${entry["title"]}. \
 % if entry["howpublished"]:
 ${entry["howpublished"]}. \
 % endif
-${entry["month"] | month_filter}, ${entry["year"]}. ${entry["url"]}
+${entry["month"] | month_filter}, ${entry["year"]}. ${url(entry)}
 
 % endfor
 
@@ -57,7 +61,7 @@ ${entry["month"] | month_filter}, ${entry["year"]}. ${entry["url"]}
 
 % for entry in presentations:
 ${entry["key"]}:
-${entry["author"] | authors_filter}. ${entry["title"]}. ${entry["howpublished"]}. ${entry["month"] | month_filter}, ${entry["year"]}. ${entry["url"]}
+${entry["author"] | authors_filter}. ${entry["title"]}. ${entry["howpublished"]}. ${entry["month"] | month_filter}, ${entry["year"]}. ${url(entry)}
 
 
 % endfor
