@@ -11,7 +11,9 @@ PYBIB = ~/develop/pyBib/scripts/pyBib.py
 #
 
 DEV_ROOT=$(HOME)/develop/www/
-WEBSITE_HTML=$(DEV_ROOT)/www.vonwelch.com/pubs/index.html
+WEBSITE_BASE=$(DEV_ROOT)/www.vonwelch.com/
+WEBSITE_PUBS=$(WEBSITE_BASE)/pubs/
+WEBSITE_HTML=$(WEBSITE_PUBS)/index.html
 
 ######################################################################
 #
@@ -31,7 +33,7 @@ TMP=tmp/
 # Our targets
 #
 
-default: html txt
+default: html txt htaccess.txt
 
 .PHONY: default
 .PHONY: html
@@ -79,6 +81,12 @@ $(WORK_HTML): $(WORK_TEMPLATE)
 clean::
 	rm -f $(WORK_HTML)
 
+# htaccess file for redirect service
+HTACCESS = htaccess.txt
+HTACESSS_TEMPLATE = $(TEMPLATES)/$(HTACCESS).template
+
+$(HTACCESS): $(HTACCESS_TEMPLATE)
+
 ######################################################################
 #
 # Installation into development directory
@@ -88,6 +96,8 @@ install: $(WEBSITE_HTML)
 $(WEBSITE_HTML): $(WORK_HTML)
 	@echo "Copying $(WORK_HTML) to $(WEBSITE_HTML)"
 	cp $(WORK_HTML) $(WEBSITE_HTML)
+	@echo "Copying $(HTACCESS) to $(WEBSITE_PUBS)"
+	cp $(HTACCESS) $(WEBSITE_PUBS)/.htaccess
 
 ######################################################################
 #

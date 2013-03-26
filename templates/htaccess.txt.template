@@ -1,0 +1,10 @@
+# htaccess file for /pubs/XXXXX redirections
+#
+# This file must have full URLs to rediect, e.g.:
+#    Redirect /pubs/abcd /pubs/index.html#foo
+
+% for paper in entries:
+% if paper.has_key("url"):
+Redirect /pubs/${paper.key} ${paper.url}
+% endif
+% endfor
