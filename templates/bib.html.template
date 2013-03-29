@@ -13,8 +13,10 @@ reports = filter(lambda e: e["type"] == "report", entries)
 presentations = filter(lambda e: e["type"] == "presentation", entries)
 
 # Create redirection URLS based on htaccess
+#   Don't need to escape ${base_url} since it is inserted literally
+#   and then processed later by pyderweb in publish.sh
 def url(e):
-    return "http://www.vonwelch.com/pubs/" + e["key"]
+    return "${base_url}pubs/" + e["key"]
 
 %>
 
