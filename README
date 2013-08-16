@@ -7,6 +7,19 @@ Makefile: Make targets are:
   default or html - create html files
   clean
 
+==Workflow==
+
+Rough, flush out...
+ * Edit appropraite files in src/
+ * Commit to git
+ * Run 'make' to generate new files
+ * Run 'make install' to install new files into ~/develop/www/www.vonwelch.com/pubs/
+ * In ~/develop/www/www.vonwelch.com/pubs/
+ * ./publish.sh test
+ * Visit test.vonwech.com/pubs/ and check on result.
+ * ./publish.sh production
+ * Commit to git
+
 ==Files to edit==
 
 src/header.conf: Variables used in the rest of the .conf files
