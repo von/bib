@@ -85,7 +85,7 @@ clean::
 HTACCESS = htaccess.txt
 HTACESSS_TEMPLATE = $(TEMPLATES)/$(HTACCESS).template
 
-$(HTACCESS): $(HTACCESS_TEMPLATE)
+$(HTACCESS): $(HTACCESS_TEMPLATE) $(MASTER_BIB)
 
 ######################################################################
 #
@@ -93,7 +93,7 @@ $(HTACCESS): $(HTACCESS_TEMPLATE)
 
 install: $(WEBSITE_HTML)
 
-$(WEBSITE_HTML): $(WORK_HTML)
+$(WEBSITE_HTML): $(WORK_HTML) $(HTACCESS)
 	@echo "Copying $(WORK_HTML) to $(WEBSITE_HTML)"
 	cp $(WORK_HTML) $(WEBSITE_HTML)
 	@echo "Copying $(HTACCESS) to $(WEBSITE_PUBS)"
