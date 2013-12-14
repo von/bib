@@ -113,7 +113,7 @@ clean::
 #
 # Implicit rules
 
-%.html: $(TEMPLATES)/%.html.template $(MASTER_BIB)
+%.html: $(TEMPLATES)/%.html.template $(TEMPLATES)/bibbase.mako $(MASTER_BIB)
 	$(PYBIB) -d -t $< $(MASTER_BIB) > $@
 
 %.txt: $(TEMPLATES)/%.txt.template $(MASTER_BIB)

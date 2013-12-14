@@ -1,3 +1,5 @@
+<%inherit file="bibbase.mako" />
+
 <%
 
 from pybib import authors_filter
@@ -8,36 +10,25 @@ entries.sort_by_date()
 # Create separate variables for types of entries
 standards = filter(lambda e: e["type"] == "standard", entries)
 
-# Create redirection URLS based on htaccess
-#   Don't need to escape ${base_url} since it is inserted literally
-#   and then processed later by pyderweb in publish.sh
-def url(e):
-    return "${base_url}pubs/" + e["key"]
-
 %>
 
-<%text>
-<%inherit file="base.mako" />
-</%text>
-<div class="main" id="bib">
-  <center>
-    <h1>Standards</h1>
-  </center>
-  <%include file="menu.html" />
-  <hr/>
-  <ul class="standards">
-    % for entry in standards:
-    <li class="standard">
-      <a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
-      <span class="title"><i>${entry["title"]}</i></span>.
-      <span class="booktitle">${entry["booktitle"]}</span>,
-      <span class="year">${entry["year"]}</span>.
-      % if entry.url:
-      ## Use 'html' filter to avoid quoting
-      <span class="url"><a href="${url(entry) | h}">${url(entry)}</a></span>
-      % endif
-    </li>
-    <br/>
-    % endfor
-  </ul>
-</div>
+<%block name="bibhead">
+  <h1>Bibliography</h1>
+</%block>
+
+
+<ul class="standards">
+  % for entry in standards:
+  <li class="standard">
+    <a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
+    <span class="title"><i>${entry["title"]}</i></span>.
+    <span class="booktitle">${entry["booktitle"]}</span>,
+    <span class="year">${entry["year"]}</span>.
+    % if entry.url:
+    ## Use 'html' filter to avoid quoting
+    <span class="url"><a href="${parent.url(entry) | h}">${parent.url(entry)}</a></span>
+    % endif
+  </li>
+  <br/>
+  % endfor
+</ul>
