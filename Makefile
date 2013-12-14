@@ -71,7 +71,7 @@ clean::
 # For my work page
 #
 
-BIB_HTML = bib.html
+BIB_HTML = index.html pres.html standards.html workshops.html reports.html
 
 html:: $(BIB_HTML)
 
@@ -88,11 +88,9 @@ $(HTACCESS): $(HTACCESS_TEMPLATE) $(MASTER_BIB)
 #
 # Installation into development directory
 
-install: $(WEBSITE_HTML)
-
-$(WEBSITE_HTML): $(BIB_HTML) $(HTACCESS)
-	@echo "Copying $(BIB_HTML) to $(WEBSITE_HTML)"
-	cp $(BIB_HTML) $(WEBSITE_HTML)
+install: $(BIB_HTML) $(HTACCESS)
+	@echo "Copying $(BIB_HTML) to $(WEBSITE_PUBS)"
+	cp $(BIB_HTML) $(WEBSITE_PUBS)
 	@echo "Copying $(HTACCESS) to $(WEBSITE_PUBS)"
 	cp $(HTACCESS) $(WEBSITE_PUBS)/.htaccess
 
