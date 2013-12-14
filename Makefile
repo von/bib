@@ -71,15 +71,12 @@ clean::
 # For my work page
 #
 
-WORK_HTML = bib.html
-WORK_TEMPLATE = $(TEMPLATES)/$(WORK_HTML).template
+BIB_HTML = bib.html
 
-html:: $(WORK_HTML)
-
-$(WORK_HTML): $(WORK_TEMPLATE)
+html:: $(BIB_HTML)
 
 clean::
-	rm -f $(WORK_HTML)
+	rm -f $(BIB_HTML)
 
 # htaccess file for redirect service
 HTACCESS = htaccess.txt
@@ -93,9 +90,9 @@ $(HTACCESS): $(HTACCESS_TEMPLATE) $(MASTER_BIB)
 
 install: $(WEBSITE_HTML)
 
-$(WEBSITE_HTML): $(WORK_HTML) $(HTACCESS)
-	@echo "Copying $(WORK_HTML) to $(WEBSITE_HTML)"
-	cp $(WORK_HTML) $(WEBSITE_HTML)
+$(WEBSITE_HTML): $(BIB_HTML) $(HTACCESS)
+	@echo "Copying $(BIB_HTML) to $(WEBSITE_HTML)"
+	cp $(BIB_HTML) $(WEBSITE_HTML)
 	@echo "Copying $(HTACCESS) to $(WEBSITE_PUBS)"
 	cp $(HTACCESS) $(WEBSITE_PUBS)/.htaccess
 
