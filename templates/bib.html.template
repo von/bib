@@ -27,13 +27,7 @@ def url(e):
   <center>
     <h1>Bibliography</h1>
   </center>
-  <ul>
-    <li><a href="#papers">Publications</a></li>
-    <li><a href="#standards">Standards</a></li>
-    <li><a href="#reports">Technical Reports</a></li>
-    <li><a href="#presentations">Recent Presentations</a></li>
-    <li><a href="#workshops">Organized Workshops and Meetings</a></li>
-  </ul>
+  <%include file="menu.html" />
   <hr/>
   <h2><a name="papers">Papers</a></h2>
   <ul class="papers">
