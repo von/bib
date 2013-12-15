@@ -1,6 +1,7 @@
 <%inherit file="bibbase.mako" />
 
 <%
+from itertools import groupby
 
 from pybib import authors_filter
 from pybib import month_filter
@@ -16,22 +17,25 @@ papers = filter(lambda e: e["type"] == "paper", entries)
 </%block>
 
 <ul class="papers">
-  % for entry in papers:
-  <li class="paper">
-    <a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
-    <span class="title"><i>${entry["title"]}</i></span>.
-    <span class="booktitle">${entry["booktitle"]}</span>,
-    <span class="year">${entry["year"]}</span>.
-    % if entry.url:
-    ## Use 'html' filter to avoid quoting
-    <span class="url"><a href="${parent.url(entry) | h}">${parent.url(entry)}</a></span>
-    % endif
-    % if entry.note:
-    <ul class="note">
-      <li>${entry.note}</li>
-    </ul>
-    % endif
-  </li>
-  <br/>
+  % for year,yearentries in groupby(papers, lambda e: e["year"]):
+    <a name="${year}"><h2>${year}</h2></a>
+    % for entry in yearentries:
+    <li class="paper">
+      <a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
+      <span class="title"><i>${entry["title"]}</i></span>.
+      <span class="booktitle">${entry["booktitle"]}</span>,
+      <span class="year">${entry["year"]}</span>.
+      % if entry.url:
+      ## Use 'html' filter to avoid quoting
+      <span class="url"><a href="${parent.url(entry) | h}">${parent.url(entry)}</a></span>
+      % endif
+      % if entry.note:
+      <ul class="note">
+        <li>${entry.note}</li>
+      </ul>
+      % endif
+    </li>
+    <br/>
+    % endfor
   % endfor
 </ul>
