@@ -14,7 +14,7 @@ workshops = filter(lambda e: e["type"] == "workshop", entries)
 %>
 
 <%block name="bibhead">
-  <h1>Bibliography</h1>
+  <h1>Organized Workshops and Meetings</h1>
 </%block>
 
 <ul class="workshops">

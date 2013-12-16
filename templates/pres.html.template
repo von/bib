@@ -13,6 +13,10 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
 
 %>
 
+<%block name="bibhead">
+  <h1>Presentations</h1>
+</%block>
+
 <ul class="presentations">
   % for year,yearpresentations in groupby(presentations, lambda e: e["year"]):
     <a name="${year}"><h2>${year}</h2></a>

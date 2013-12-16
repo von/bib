@@ -14,7 +14,7 @@ standards = filter(lambda e: e["type"] == "standard", entries)
 %>
 
 <%block name="bibhead">
-  <h1>Bibliography</h1>
+  <h1>Standards</h1>
 </%block>
 
 

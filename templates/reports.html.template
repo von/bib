@@ -14,7 +14,7 @@ reports = filter(lambda e: e["type"] == "report", entries)
 %>
 
 <%block name="bibhead">
-  <h1>Bibliography</h1>
+  <h1>Technical Reports</h1>
 </%block>
 
 <ul class="reports">
