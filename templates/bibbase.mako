@@ -3,8 +3,9 @@
 ## Create redirection URLS based on htaccess
 ##   Do not need to escape ${base_url} since it is inserted literally
 ##   and then processed later by pyderweb in publish.sh
-<%def name="url(e)">
-  ${context.get("base_url") or ""}pubs/${e["key"]}
+##   Escape newlines so we return script with no newlines.
+<%def name="url(e)">\
+<%text>${base_url}pubs/</%text>${e["key"]}\
 </%def>
 
 ## This inherit will actually be used when we generate the actual website
