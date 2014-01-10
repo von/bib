@@ -10,7 +10,7 @@ PYBIB = ~/develop/pyBib/scripts/pyBib.py -T templates/
 # Installation paths
 #
 
-DEV_ROOT=$(HOME)/develop/www/
+DEV_ROOT=$(HOME)/develop/
 WEBSITE_BASE=$(DEV_ROOT)/www.vonwelch.com/
 WEBSITE_PUBS=$(WEBSITE_BASE)/pubs/
 WEBSITE_HTML=$(WEBSITE_PUBS)/index.html
