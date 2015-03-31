@@ -32,6 +32,11 @@ presentations = filter(lambda e: e["type"] == "presentation", entries)
       ## Use 'html' filter to avoid quoting
       <span class="url"><a href="${parent.url(entry) | h}">${parent.url(entry)}</a></span>
       % endif
+      % if entry.note:
+      <ul class="note">
+        <li>${entry.note}</li>
+      </ul>
+      % endif
     </li>
     <br/>
     % endfor
