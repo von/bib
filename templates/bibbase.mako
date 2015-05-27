@@ -4,8 +4,18 @@
 ##   Do not need to escape ${base_url} since it is inserted literally
 ##   and then processed later by pyderweb in publish.sh
 ##   Escape newlines so we return script with no newlines.
+<%!
+from urlparse import urlparse
+
+def permanent_url(e):
+  components = urlparse(e["url"])
+  if "handle.net" in components.netloc:
+      return e["url"]
+  return "${base_url}pubs/" + e["key"]
+%>
+
 <%def name="url(e)">\
-<%text>${base_url}pubs/</%text>${e["key"]}\
+${permanent_url(e)}\
 </%def>
 
 ## This inherit will actually be used when we generate the actual website
