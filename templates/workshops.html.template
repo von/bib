@@ -22,6 +22,9 @@ workshops = filter(lambda e: e["type"] == "workshop", entries)
     <a name="${year}"><h2>${year}</h2></a>
     % for entry in yearworkshops:
     <li class="workshop">
+      % if entry["author"]:
+        <a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
+      % endif
       <a name="${entry["key"]}"><span class="title"><i>${entry["title"]}</i></span></a>.
       <span class="howpublished">${entry["howpublished"]}</span>,
       <span class="month">${entry["month"] | month_filter }</span>
