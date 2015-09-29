@@ -11,6 +11,8 @@ def permanent_url(e):
   components = urlparse(e["url"])
   if "handle.net" in components.netloc:
       return e["url"]
+  if "doi.org" in components.netloc:
+      return e["url"]
   return "${base_url}pubs/" + e["key"]
 %>
 
