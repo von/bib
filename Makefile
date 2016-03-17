@@ -3,7 +3,7 @@
 # Binaries and scripts we call
 #
 
-PYBIB = ~/develop/pyBib/scripts/pyBib.py -T templates/
+PYBIB = pyBib.py -T templates/
 
 ######################################################################
 #
