@@ -36,9 +36,7 @@ reports = filter(lambda e: e["type"] == "report", entries)
       <span class="url"><a href="${parent.url(entry) | h}">${parent.url(entry)}</a></span>
       % endif
       % if entry.note:
-      <ul class="note">
-        <li>${entry.note}</li>
-      </ul>
+      <ul class="note"><li>${entry.note}</li></ul>
       % endif
     </li>
     <br/>
