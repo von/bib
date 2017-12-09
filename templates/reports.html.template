@@ -9,7 +9,8 @@ from pybib import month_filter
 entries.sort_by_date()
 
 # Create separate variables for types of entries
-reports = filter(lambda e: e["type"] == "report", entries)
+types = [ "report", "oped", "article" ]
+reports = filter(lambda e: e["type"] in types, entries)
 
 %>
 
