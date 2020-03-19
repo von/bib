@@ -1,3 +1,4 @@
+## -*- coding: utf-8 -*-
 ## Base template for bib files
 
 ## Create redirection URLS based on htaccess

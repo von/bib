@@ -21,7 +21,7 @@ papers = filter(lambda e: e["type"] == "paper", entries)
     <a name="${year}"><h2>${year}</h2></a>
     % for entry in yearentries:
     <li class="paper">
-      <a name="${entry["key"]}"><span class="author">${entry["author"] | authors_filter}</span></a>.
+      <a name="${entry["key"]}"><span class="author">${entry["author"].decode('utf-8') | authors_filter}</span></a>.
       <span class="title"><i>${entry["title"]}</i></span>.
       <span class="booktitle">${entry["booktitle"]}</span>,
       <span class="year">${entry["year"]}</span>.
