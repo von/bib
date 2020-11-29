@@ -6,7 +6,7 @@
 ##   and then processed later by pyderweb in publish.sh
 ##   Escape newlines so we return script with no newlines.
 <%!
-from urlparse import urlparse
+from urllib.parse import urlparse
 
 def permanent_url(e):
   components = urlparse(e["url"])
