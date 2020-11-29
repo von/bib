@@ -4,7 +4,7 @@
 #    Redirect /pubs/abcd /pubs/index.html#foo
 
 % for paper in entries:
-% if paper.has_key("url"):
+% if "url" in paper:
 Redirect /pubs/${paper.key} ${paper.url}
 % endif
 % endfor
